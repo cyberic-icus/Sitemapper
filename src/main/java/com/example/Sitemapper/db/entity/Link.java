@@ -19,9 +19,13 @@ public class Link {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "VARCHAR(255)")
     private UUID id;
-    private URL url;
+    private String url;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "sitemap_id", nullable = false)
     private Sitemap sitemap;
+
+    public Link(String url) {
+        this.url = url;
+    }
 }

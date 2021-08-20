@@ -23,7 +23,7 @@ public class Sitemap {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "VARCHAR(255)")
     private UUID id;
-    private URL baseURL;
+    private String baseURL;
     private Integer crawlDelay = 25;
 
     @OneToMany(mappedBy = "sitemap", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

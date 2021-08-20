@@ -18,8 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 public class SeleniumWebDriverConfig {
     private final Environment env;
+    private WebDriver driver;
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public WebDriver driver(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -30,8 +31,11 @@ public class SeleniumWebDriverConfig {
                 "--ignore-certificate-errors"
         );
         options.setBinary(env.getProperty("browser.path"));
-
-        return new ChromeDriver(options);
+        driver = new ChromeDriver(options);
+        return driver;
+    }
+    public void close(){
+        driver.close();
     }
 
 }
