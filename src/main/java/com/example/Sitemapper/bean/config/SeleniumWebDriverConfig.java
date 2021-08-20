@@ -28,7 +28,8 @@ public class SeleniumWebDriverConfig {
                 "--headless",
                 "--disable-gpu",
                 "--window-size=1920,1200",
-                "--ignore-certificate-errors"
+                "--ignore-certificate-errors",
+                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
         );
         options.setBinary(env.getProperty("browser.path"));
         driver = new ChromeDriver(options);
