@@ -6,10 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Setter
@@ -24,10 +21,10 @@ public class Sitemap {
     @Column(name = "id", columnDefinition = "VARCHAR(255)")
     private UUID id;
     private String baseURL;
-    private Integer crawlDelay = 25;
+    private boolean isReady = false;
 
     @OneToMany(mappedBy = "sitemap", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Link> map = new HashSet<>();
+    private List<Link> map = new ArrayList<>();
 
 
 }
